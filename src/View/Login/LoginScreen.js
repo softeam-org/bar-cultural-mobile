@@ -1,16 +1,20 @@
 /* eslint-disable react/prop-types */
-import { View, Text, TouchableOpacity, ImageBackground, Image, TextInput } from "react-native"
+import { View, Text, TouchableOpacity, ImageBackground, Image, } from "react-native"
 import React, { useState } from "react"
 import style from "./Style/styleLogin"
-import { Ionicons, MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons"
+import TextI from "./Component/TextI"
+import { Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons"
 
 export default function LoginScreen({ navigation }) {
 
 	const [nome, setNome] = useState("")
 	const [CPF, setCPF] = useState("")
 	const [dinheiro, setDinheiro] = useState("")
+
 	//desconsiderável só pro eslint não encher o saco por hora
-	console.log(nome + CPF + dinheiro)
+	console.log(nome)
+	console.log(CPF)
+	console.log(dinheiro)
 
 	return (
 		<ImageBackground source={require("../../../assets/fundo.jpg")} style={style.background}>
@@ -19,40 +23,19 @@ export default function LoginScreen({ navigation }) {
 				<Image style={style.image} source={require("../../../assets/Icone.png")} />
 
 				<View style={style.input}>
-					<View style={style.containerInput}>
-						<View style={style.iconInput}>
-							<Ionicons name="person-circle-outline" size={32} color="#151515" />
-						</View>
-						<TextInput
-							style={style.txtInput}
-							placeholder="nome"
-							onChangeText={setNome}
-						/>
-					</View>
 
-					<View style={style.containerInput}>
-						<View style={style.iconInput}>
-							<MaterialCommunityIcons name="badge-account-horizontal-outline" size={24} color="black" />
-						</View>
-						<TextInput
-							style={style.txtInput}
-							placeholder="CPF"
-							onChangeText={setCPF}
-							keyboardType="numeric"
-						/>
-					</View>
+					<TextI placeholder="nome" setValue={setNome}>
+						<Ionicons name="person-circle-outline" size={32} color="#151515" />
+					</TextI>
 
-					<View style={style.containerInput}>
-						<View style={style.iconInput}>
-							<MaterialIcons name="attach-money" size={24} color="black" />
-						</View>
-						<TextInput
-							style={style.txtInput}
-							placeholder="dinheiro"
-							onChangeText={setDinheiro}
-							keyboardType="numeric"
-						/>
-					</View>
+					<TextI placeholder="CPF" setValue={setCPF} keyboard="numeric">
+						<MaterialCommunityIcons name="badge-account-horizontal-outline" size={24} color="black" />
+					</TextI>
+
+					<TextI placeholder="dinheiro" setValue={setDinheiro} keyboard="numeric">
+						<MaterialIcons name="attach-money" size={24} color="black" />
+					</TextI>
+				
 				</View>
 
 				<View style={style.containerButton}>
