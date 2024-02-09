@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Evento from '../View/Evento/EventScreen'
 import Estorno from '../View/Estorno/EstornoScreen'
 import Login from '../View/Login/LoginScreen'
-import Produto from "../View/Produto/ProdutoScreen";
+import Produtos from "../View/Produto/ProdutoScreen";
 
 const Drawer = createDrawerNavigator()
 
@@ -12,7 +12,7 @@ function MyDrawer() {
 		<Drawer.Navigator initialRouteName="Evento" >
 			<Drawer.Screen name="Evento" component={Evento} />
 			<Drawer.Screen name="Estorno" component={Estorno} />
-      <Drawer.Screen name="Produto" component={Produto}/>
+      <Drawer.Screen name="Produtos" component={Produtos}/>
 		</Drawer.Navigator>
 	)
 }
