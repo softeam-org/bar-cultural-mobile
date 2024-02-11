@@ -5,8 +5,7 @@ import Evento from '../View/Evento/EventScreen'
 import Estorno from '../View/Estorno/EstornoScreen'
 import { ImageBackground } from 'react-native';
 
-
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
 export default function MyStack() {
   return (
@@ -16,4 +15,5 @@ export default function MyStack() {
         <Stack.Screen name="Estorno" component={Estorno} />
       </Stack.Navigator>
   );
+
 }
