@@ -6,7 +6,6 @@ import TextI from "./Component/TextI"
 import { Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons"
 
 export default function LoginScreen({ navigation }) {
-
 	const [nome, setNome] = useState("")
 	const [CPF, setCPF] = useState("")
 	const [dinheiro, setDinheiro] = useState("")
