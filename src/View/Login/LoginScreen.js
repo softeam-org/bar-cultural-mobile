@@ -14,7 +14,7 @@ export default function LoginScreen({ navigation }) {
 
         <View style={style.containerButton}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Drawer')}
+            onPress={() => navigation.navigate('Eventos')}
             style={style.buttonLogin}
           >
             <Text style={style.buttonTxt}>Cadastrar</Text>
