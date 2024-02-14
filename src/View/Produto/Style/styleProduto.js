@@ -18,7 +18,7 @@ import { StyleSheet } from "react-native";
     alignItems: 'center'
   },
   headerText: {
-    fontWeight: 'bold',
+    fontWeight: '700',
     color: 'white',
     width: "100%",
     textAlign: 'center',
@@ -31,11 +31,9 @@ import { StyleSheet } from "react-native";
     borderBottomStartRadius: 20
   },
   body: {
-    padding: 10,
     marginHorizontal: 20,
-    paddingHorizontal: 0,
-    paddingVertical: 50
-    },
+    paddingTop: 10,
+  },
   selecao:{
     flexDirection: 'row',
     alignItems: 'center',

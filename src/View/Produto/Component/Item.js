@@ -33,7 +33,7 @@ export default function Item ({title, valor, styleItem}){
 
   return(
   <View style={[style.itemContainer, styleItem]}>
-    <Text>{title}</Text>
+    <Text style={style.itemTitle}>{title}</Text>
     <View style={style.selecao}>
       <View style={style.qtdItens}>
         <SetaLeft onPress={subtrair}/>
