@@ -3,8 +3,8 @@ import { View, Text } from "react-native"
 
 import style from "../Style/styleProduto"
 
-import SetaLeft from '../../../../assets/setaLeft.svg' 
-import SetaRigth from '../../../../assets/setaRigth.svg' 
+import SetaLeft from '../../../../../assets/setaLeft.svg' 
+import SetaRigth from '../../../../../assets/setaRigth.svg' 
 
 
 export default function Item ({title, valor, styleItem, stateQuantidade, onQuantidadeChange}){

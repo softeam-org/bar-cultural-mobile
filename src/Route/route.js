@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Evento from '../View/Evento/EventScreen'
 import Estorno from '../View/Estorno/EstornoScreen'
 import Login from '../View/Login/LoginScreen'
-import Produtos from "../View/Produto/ProdutoScreen";
+import Produtos from "../View/Evento/Produto/ProdutoScreen";
 
 const Drawer = createDrawerNavigator()
 

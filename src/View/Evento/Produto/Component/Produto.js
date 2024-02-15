@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Animated } from 'react-native';
 
 import styles from '../Style/styleProduto';
-import Seta from '../../../../assets/seta.svg'; 
+import Seta from '../../../../../assets/seta.svg'; 
 
 export default function Produto({title, children}) {
   
