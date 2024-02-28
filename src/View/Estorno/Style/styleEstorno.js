@@ -1,25 +1,26 @@
 import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
-  imgBackground: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    resizeMode: "cover"
-  },
-  imgCover: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    resizeMode: "cover",
-    position: 'absolute',
-  },
+	imgBackground: {
+		width: "100%",
+		height: "100%",
+	},
+	imgCover: {
+		flex: 1,
+		padding:20,
+		alignItems:"center",
+		backgroundColor:"rgba(400,400,400,0.7)"
+	},
 
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+	container: {
+		width:"85%",
+		height:116,
+		borderRadius:20,
+		paddingTop:5,
+		paddingBottom:32,
+		alignItems: "center",
+		backgroundColor:"#fff",
+	},
+	
+})
 
