@@ -4,7 +4,7 @@ import { colors } from "../../Style/vars";
 export default StyleSheet.create({
   body: {
 		marginHorizontal: 20,
-		paddingTop: 10,
+		paddingTop: 30,
 	},
 	containerOption:{
 		backgroundColor: colors.branco,
