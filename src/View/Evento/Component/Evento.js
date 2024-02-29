@@ -7,7 +7,7 @@ export default function Evento({evento}) {
   const navigation = useNavigation()
 
   return (
-    <TouchableOpacity style={style.container}>
+    <TouchableOpacity style={style.container} onPress={()=> navigation.navigate('Produtos')}>
       <View style={style.containerTitle}>
         <Text style={style.title}>{evento.nome}</Text>
       </View>
