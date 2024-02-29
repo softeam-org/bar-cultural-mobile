@@ -28,8 +28,7 @@ export default function Evento({evento}) {
             <Text style={style.buttonMore}>Mais</Text>
           </TouchableOpacity>
         </View>
-
-      </View>
-    </TouchableOpacity>
-  )
+			</View>
+		</TouchableOpacity>
+	)
 }
