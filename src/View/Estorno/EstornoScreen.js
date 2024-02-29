@@ -12,7 +12,7 @@ export default function EstornoScreen() {
 		setCod("Código inválido! Digite novamente.")
 		setErro(true)
 	}
-
+  
 	return (
 		<ImageBackground 
 		source={require("../../../assets/fundo.jpg")}
