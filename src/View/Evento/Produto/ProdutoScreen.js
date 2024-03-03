@@ -15,11 +15,11 @@ export default function ProdutoScreen() {
       itens: [
         {
           titulo: 'Entrada Inteira',
-          valor: '15,00'
+          valor: '15,80'
         },
         {
           titulo: 'Meia-Entrada',
-          valor: '10,00'
+          valor: '10,50'
         }
       ]
     },
