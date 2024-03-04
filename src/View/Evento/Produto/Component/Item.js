@@ -5,7 +5,12 @@ import style from "../Style/styleProduto";
 import { MaterialIcons } from "@expo/vector-icons";
 
 export default function Item({ title, valor, styleItem, stateQuantidade, onQuantidadeChange }) {
-  const [quantidade, setQuantidade] = useState(stateQuantidade);
+  
+  /* Há necessidade de veirificar se stateQuanidade é um objeto, pois apesar de atualizar-se, quando o o componete produto é collapsado
+     seu valor retorna como um objeto, para preservar seu estado
+  */
+  const [quantidade, setQuantidade] = typeof stateQuantidade === "object" ? useState(stateQuantidade.quantidade) :  useState(stateQuantidade);
+
 
   // Função para calcular o total
   const calcularTotal = (qtd) => {

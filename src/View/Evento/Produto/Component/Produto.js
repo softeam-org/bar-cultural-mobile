@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react"
 import { View, Text, TouchableOpacity, Animated } from "react-native"
 import { MaterialIcons } from "@expo/vector-icons"
 import styles from "../Style/styleProduto"
-// import Seta from "../../../../../assets/seta.svg" 
 
-export default function Produto({title, children}) {
+export default function Produto({title, children, onRelatProduto}) {
   
 	const [isExpanded, setIsExpanded] = useState(false)
 	const [animation] = useState(new Animated.Value(0))
@@ -27,14 +26,14 @@ export default function Produto({title, children}) {
 	useEffect(() => {
 		// Lógica para atualizar os itens do produto
 		const updatedProduto = { ...produto }; // Crie uma cópia do produto atual
-		updatedProduto.itens = []; // Limpe os itens do produto para não gerar duplicidade
+		updatedProduto.itens = []; // Limpea os itens do produto para não gerar duplicidade
 	
 		// Adicione os itens atualizados
 		Object.keys(quantidades).forEach((titulo) => {
 			updatedProduto.itens.push({
 				nome: titulo,
 				quantidade: quantidades[titulo].quantidade,
-				total: quantidades[titulo].total
+				total: parseFloat(quantidades[titulo].total)
 			});
 		});
 	
@@ -42,8 +41,11 @@ export default function Produto({title, children}) {
 		setProduto(updatedProduto);
 	
 		console.log("Produto atualizado:", updatedProduto);
+		onRelatProduto(updatedProduto)
+
+
 	}, [quantidades]);
-	
+
 /* --------------------------------------------------------------------------------------- */
 
 	const toggleAccordion = () => {
@@ -91,12 +93,6 @@ export default function Produto({title, children}) {
 					})}
 				</View>
 			)}
-			 {Object.keys(quantidades).map((titulo, index) => (
-    // Extrair a quantidade e o total antes de renderizá-los no componente de texto
-    <View key={index}>
-      <Text>{titulo}: R$ {quantidades[titulo].total} {quantidades[titulo].quantidade}</Text>
-    </View>
-  ))}
 		</View>
 	)
 }
