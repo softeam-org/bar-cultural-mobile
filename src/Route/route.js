@@ -7,6 +7,7 @@ import Estorno from "../View/Estorno/EstornoScreen"
 import EstornoDetalhes from "../View/Estorno/EstornoDetalhesScreen"
 import EstornoConfirm from '../View/Estorno/EstornoConfirmScreen'
 import Produtos from "../View/Evento/Produto/ProdutoScreen";
+import Consulta from "../View/Consulta/ConsultaScreen";
 import Impressao from "../View/Impressao/ImpressaoScreen"
 
 const Stack = createStackNavigator()
@@ -18,6 +19,7 @@ export default function MyStack() {
 			<Stack.Screen name="Eventos" component={Evento} />
 			<Stack.Screen name="Detalhes Evento" component={DetalheEvento} />
 			<Stack.Screen name="Estorno" component={Estorno} />
+			<Stack.Screen name="Consulta" component={Consulta} />
 			<Stack.Screen name="Estorno detalhes" component={EstornoDetalhes} />
 			<Stack.Screen name="Estorno confirmação" component={EstornoConfirm} />
 			<Stack.Screen name="Produtos" component={Produtos} />
