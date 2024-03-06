@@ -5,6 +5,8 @@ import Item from './Component/Item'
 import Produto from './Component/Produto'
 import style from './Style/styleProduto'
 import { ScrollView } from 'react-native-gesture-handler'
+import Fundo from '../../Components/Fundo'
+import Footer from '../../Components/Footer'
 
 export default function ProdutoScreen() {
   const produtos = [
@@ -78,18 +80,21 @@ export default function ProdutoScreen() {
     }
   ]
   return (
-    <ScrollView showsVerticalScrollIndicator={false} overScrollMode={'never'}>
-      <View style={style.body}>
-        {produtos.map((produto, index) => (
-          <Produto title={produto.titulo} key={index}>
-            {produto.itens.map((item, index) => (
-              <Item title={item.titulo} valor={item.valor} key={index} 
-              styleItem={{ borderTopWidth: index == 0 ? 0 : 1}}/>
-            ))}
-          </Produto>
-        ))}
-      </View>
-    </ScrollView>
+    <Fundo tela={'Produtos'}>
+      <ScrollView showsVerticalScrollIndicator={false} overScrollMode={'never'}>
+        <View style={style.body}>
+          {produtos.map((produto, index) => (
+            <Produto title={produto.titulo} key={index}>
+              {produto.itens.map((item, index) => (
+                <Item title={item.titulo} valor={item.valor} key={index}
+                  styleItem={{ borderTopWidth: index == 0 ? 0 : 1 }} />
+              ))}
+            </Produto>
+          ))}
+        </View>
+      </ScrollView>
+      <Footer/>
+    </Fundo>
   )
 }
 

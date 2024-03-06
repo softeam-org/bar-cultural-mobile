@@ -17,8 +17,11 @@ export default function Header({ nome }) {
   let navegar = ['Eventos', 'Estorno', 'Consulta','Impressão', 'Sair']
 
   function filtrarNave(navegar){
-    if(navegar!=nome)
+    if(nome=="Produtos" && navegar=='Eventos')
+      return null
+    else if(navegar!=nome){
       return navegar
+    }
     else{
       return null
     }
