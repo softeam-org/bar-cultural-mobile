@@ -9,6 +9,7 @@ import EstornoConfirm from '../View/Estorno/EstornoConfirmScreen'
 import Produtos from "../View/Evento/Produto/ProdutoScreen";
 import Consulta from "../View/Consulta/ConsultaScreen";
 import Impressao from "../View/Impressao/ImpressaoScreen"
+import PagamentoScreen from "../View/Evento/Pagamento/PagamentoScreen"
 
 const Stack = createStackNavigator()
 
@@ -24,6 +25,7 @@ export default function MyStack() {
 			<Stack.Screen name="Estorno confirmação" component={EstornoConfirm} />
 			<Stack.Screen name="Produtos" component={Produtos} />
 			<Stack.Screen name="Impressão" component={Impressao} />
+			<Stack.Screen name="Pagamento" component={PagamentoScreen}/>
 		</Stack.Navigator>
 	)
 
