@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Item from './Component/Item'
 import Produto from './Component/Produto'
@@ -15,11 +15,11 @@ export default function ProdutoScreen() {
       itens: [
         {
           titulo: 'Entrada Inteira',
-          valor: '15,00'
+          valor: '15,80'
         },
         {
           titulo: 'Meia-Entrada',
-          valor: '10,00'
+          valor: '10,50'
         }
       ]
     },
@@ -79,21 +79,57 @@ export default function ProdutoScreen() {
       ]
     }
   ]
+  
+/* ----------------------Cria um relatório para os itens comprados de cada produto--------------------------------------- */
+
+  const [relatorio, setRelatorio] = useState([]);
+
+  const handleRelatProduto = (produto) => {
+    setRelatorio((prevRelatorio) => {
+      const produtoExistente = prevRelatorio.find((item) => item.titulo === produto.titulo); //verifica se o produto ja existe 
+      if (produtoExistente) { //Caso exista, é gerado um novo relatório atualizado
+        const novoRelatorio = prevRelatorio.map((item) => (item.titulo === produto.titulo ? produto : item));
+
+        return novoRelatorio;
+      } else { //caso contrário, o produto é adicionado ao relatório
+        return [...prevRelatorio, produto];
+      }
+    });
+  };
+
+/* --------------------------------------------------------------------------------------- */
+
+  const [total, setTotal] = useState(0)
+
+  useEffect(() => {
+    let totalItem = 0;
+    relatorio.forEach((produto) => {
+      produto.itens.forEach((item) => {
+        const valor = item.total
+        totalItem +=valor;
+        setTotal(totalItem)
+      });
+    });
+    console.log(total);
+  }, [relatorio]);
+  
+
+  
   return (
     <Fundo tela={'Produtos'}>
       <ScrollView showsVerticalScrollIndicator={false} overScrollMode={'never'}>
         <View style={style.body}>
           {produtos.map((produto, index) => (
-            <Produto title={produto.titulo} key={index}>
-              {produto.itens.map((item, index) => (
-                <Item title={item.titulo} valor={item.valor} key={index}
+            <Produto title={produto.titulo} key={index} onRelatProduto = {handleRelatProduto}>
+              {produto.itens.map((item, i) => (
+                <Item title={item.titulo} valor={item.valor} key={i}
                   styleItem={{ borderTopWidth: index == 0 ? 0 : 1 }} />
               ))}
             </Produto>
           ))}
         </View>
       </ScrollView>
-      <Footer nextScreen={"Pagamento"}/>
+      <Footer Valor={total} nextScreen={"Pagamento"}/>
     </Fundo>
   )
 }
