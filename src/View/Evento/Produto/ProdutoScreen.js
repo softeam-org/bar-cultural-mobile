@@ -129,7 +129,7 @@ export default function ProdutoScreen() {
           ))}
         </View>
       </ScrollView>
-      <Footer Valor={total}/>
+      <Footer Valor={total} nextScreen={"Pagamento"}/>
     </Fundo>
   )
 }
