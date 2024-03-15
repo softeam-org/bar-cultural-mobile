@@ -10,7 +10,7 @@ export default StyleSheet.create({
     backgroundColor: "rgba(500,500,500,0.7)",
     flex: 1,
     alignItems: "center",
-  
+
   },
   container: {
     backgroundColor: "#fff",
@@ -26,11 +26,8 @@ export default StyleSheet.create({
     width: 310,
     borderRadius: 10,
     backgroundColor: "#00AD26",
-    color: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: 24,
-    fontWeight: "bold",
   },
   input: {
     width: 300,
@@ -40,6 +37,11 @@ export default StyleSheet.create({
   },
   text: {
     fontSize: 20,
+  },
+  txtButton: {
+    color: "#fff",
+    fontSize: 24,
+    fontWeight: "bold",
   }
 })
 
