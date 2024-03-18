@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity} from "react-native"
-import { MaterialIcons } from "@expo/vector-icons"
+import { FontAwesome6 } from "@expo/vector-icons"
 import { useState } from "react";
 
 import { colors } from "../../../Style/vars";
@@ -32,7 +32,7 @@ export default function ConfirmPag({tipo, Icon, valor, onPress, visible}){
       { !visiblePagar && !visibleAlt ? (<View style={style.confirmContainer}>
         <Text style={style.confirmText}>Forma de Pagamento:</Text>
         <View style={style.confirmTipo}>
-          <MaterialIcons name={Icon} size={30} color={'black'}/>
+          <FontAwesome6 name={Icon} size={30} color={'black'}/>
           <Text style={style.tipoText}>{tipo}</Text>
         </View>
         <View style={style.containerVal}>

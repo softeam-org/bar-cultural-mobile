@@ -11,20 +11,16 @@ export default function PagamentoScreen(){
 
   const formasPag = [
     {
-      "Icon": "pix",
-      "title": "Pix"
-    },
-    {
       "Icon": "credit-card",
       "title": "Cartão de Crédito"
     },
     {
-      "Icon": "pix",
-      "title": "Pix"
-    },
-    {
       "Icon": "credit-card",
       "title": "Cartão de Débito"
+    },
+    {
+      "Icon": "money-bills",
+      "title": "Dinheiro"
     },
     {
       "Icon": "pix",
