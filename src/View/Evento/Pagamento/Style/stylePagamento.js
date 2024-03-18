@@ -93,7 +93,7 @@ export default StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     marginVertical: 20,
-    marginLeft: 10
+    minWidth: 50,
    },
    valAlterarContainer: {
     flexDirection: 'row'

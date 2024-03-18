@@ -1,5 +1,5 @@
 import { View, Modal } from "react-native";
-import { useState, useEffect,  } from "react";
+import { useState} from "react";
 
 import Footer from "../../Components/Footer";
 import TipoPagamento from "./Component/TipoPagamento";
@@ -36,8 +36,8 @@ export default function PagamentoScreen(){
   const [confirmProps,setConfirmProps] = useState([]);
 
   // pega estado de visible quando o botão cancelar é clicado no componente ConfirmePag
-  const handleVisible = (visible) => {
-    setVisible(visible)
+  const handleVisible = (vis) => {
+    setVisible(vis)
   }
 
   //pega icone e titulo da forma de pagamento
@@ -58,7 +58,7 @@ export default function PagamentoScreen(){
             animationType="fade"
             transparent={true}
             visible={visible}
-            onRequestClose={() => visible(false)}
+            onRequestClose={() => setVisible(false)}
           >
            <ConfirmPag tipo={confirmProps[1]} Icon={confirmProps[0]} valor={'20,00'} visible={visible} onPress={handleVisible}/>
           </Modal>
