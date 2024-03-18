@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react"
 import { View, Text, TouchableOpacity, Animated } from "react-native"
 import { MaterialIcons } from "@expo/vector-icons"
 import styles from "../Style/styleProduto"
-// import Seta from "../../../../../assets/seta.svg" 
 
-export default function Produto({title, children}) {
+export default function Produto({title, children, onRelatProduto}) {
   
 	const [isExpanded, setIsExpanded] = useState(false)
 	const [animation] = useState(new Animated.Value(0))
@@ -13,11 +12,41 @@ export default function Produto({title, children}) {
 	/*----------- Armazena as quantidades de cada item ----------------*/
 
 	const [quantidades, setQuantidades] = useState({}) 
-	const handleQuantidadeChange = (titulo, stateQuantidade) => {
-		setQuantidades({ ...quantidades, [titulo]: stateQuantidade })
+	const handleQuantidadeChange = (titulo, stateQuantidade, total) => {
+		setQuantidades({ ...quantidades, [titulo]: { quantidade: stateQuantidade, total: total } });
 	}
 
-	/* --------------------------------------------------------------- */
+	/* -----------------------Relatório de itens selecionados do produto------------------------------ */
+
+	const [produto, setProduto] = useState({
+    titulo: title,
+    itens: []
+  })
+
+	useEffect(() => {
+		// Lógica para atualizar os itens do produto
+		const updatedProduto = { ...produto }; // Crie uma cópia do produto atual
+		updatedProduto.itens = []; // Limpea os itens do produto para não gerar duplicidade
+	
+		// Adicione os itens atualizados
+		Object.keys(quantidades).forEach((titulo) => {
+			updatedProduto.itens.push({
+				nome: titulo,
+				quantidade: quantidades[titulo].quantidade,
+				total: parseFloat(quantidades[titulo].total)
+			});
+		});
+	
+		// Atualize o estado do produto
+		setProduto(updatedProduto);
+	
+		console.log("Produto atualizado:", updatedProduto);
+		onRelatProduto(updatedProduto)
+
+
+	}, [quantidades]);
+
+/* --------------------------------------------------------------------------------------- */
 
 	const toggleAccordion = () => {
 		setIsExpanded(!isExpanded) // Atualiza estado do componente
