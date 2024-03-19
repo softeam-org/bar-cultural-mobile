@@ -4,12 +4,14 @@ import Header from "../Components/Header"
 import Fundo from '../Components/Fundo'
 import style from "./Style/style"
 import { colors } from "../Style/vars"
+import { useNavigation } from "@react-navigation/native"
 
 export default function ConsultaScreen() {
 
+  const navigation = useNavigation()
+
   function Verificar() {
-    setCodigo("Nenhum dado encontrado!")
-    setErro(true)
+    navigation.navigate('Consulta Detalhes')
   }
 
 
