@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
 import Item from './Component/Item'
 import Produto from './Component/Produto'
@@ -7,6 +7,7 @@ import style from './Style/styleProduto'
 import { ScrollView } from 'react-native-gesture-handler'
 import Fundo from '../../Components/Fundo'
 import Footer from '../../Components/Footer'
+import { RelatContex } from '../../../Context/RelatorioPag'
 
 export default function ProdutoScreen() {
   const produtos = [
@@ -79,41 +80,43 @@ export default function ProdutoScreen() {
       ]
     }
   ]
-  
+   const {compra, relatorio, total } = useContext(RelatContex) //context
+
 /* ----------------------Cria um relatório para os itens comprados de cada produto--------------------------------------- */
 
-  const [relatorio, setRelatorio] = useState([]);
+  const [selecionados, setSelecionados] = useState([]);
 
   const handleRelatProduto = (produto) => {
-    setRelatorio((prevRelatorio) => {
-      const produtoExistente = prevRelatorio.find((item) => item.titulo === produto.titulo); //verifica se o produto ja existe 
+    setSelecionados((prevSelecionados) => {
+      const produtoExistente = prevSelecionados.find((item) => item.titulo === produto.titulo); //verifica se o produto ja existe 
       if (produtoExistente) { //Caso exista, é gerado um novo relatório atualizado
-        const novoRelatorio = prevRelatorio.map((item) => (item.titulo === produto.titulo ? produto : item));
-
-        return novoRelatorio;
+        const novoSelecionados = prevSelecionados.map((item) => (item.titulo === produto.titulo ? produto : item));
+        return novoSelecionados;
       } else { //caso contrário, o produto é adicionado ao relatório
-        return [...prevRelatorio, produto];
+        
+        const novoSelecionados = [...prevSelecionados, produto];
+        return novoSelecionados;
       }
     });
   };
 
 /* --------------------------------------------------------------------------------------- */
 
-  const [total, setTotal] = useState(0)
-
-  useEffect(() => {
+  //irá calcular o valor total dos produtos selecionados
+  const calcularTotal = (selecionados) => {
     let totalItem = 0;
-    relatorio.forEach((produto) => {
+    selecionados.forEach((produto) => {
       produto.itens.forEach((item) => {
         const valor = item.total
         totalItem +=valor;
-        setTotal(totalItem)
       });
     });
-    console.log(total);
-  }, [relatorio]);
-  
+    return totalItem.toFixed(2); // Formata para duas casas decimais
+  };
 
+  useEffect(() => {
+    compra(calcularTotal(selecionados), selecionados); // quando o estado de selecionados mudar o total e selecionados atualizam o context
+  }, [selecionados])
   
   return (
     <Fundo tela={'Produtos'}>
@@ -129,7 +132,7 @@ export default function ProdutoScreen() {
           ))}
         </View>
       </ScrollView>
-      <Footer Valor={total} nextScreen={"Pagamento"}/>
+      <Footer valor={total} nextScreen={"Pagamento"}/>
     </Fundo>
   )
 }

@@ -39,6 +39,7 @@ export default StyleSheet.create({
 	},
 	txt:{
 		fontSize:20,
-		color:colors.branco
+		color:colors.branco,
+		fontWeight: '700'
 	}
 })

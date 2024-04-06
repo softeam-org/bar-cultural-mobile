@@ -1,14 +1,16 @@
 import { View, Text, TouchableOpacity} from "react-native"
 import { FontAwesome6 } from "@expo/vector-icons"
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { colors } from "../../../Style/vars";
 import style from '../Style/stylePagamento'
 import Pagar from "./Pagar"
 import Alterar from "./Alterar";
+import {RelatContex  } from '../../../../Context/RelatorioPag'
 
 
 export default function ConfirmPag({tipo, Icon, valor, onPress, visible}){
+  const { altValor, total} = useContext(RelatContex)
 
   const handleCancelar = () => {
     // Chama onPress com o valor oposto de visible
@@ -24,7 +26,7 @@ export default function ConfirmPag({tipo, Icon, valor, onPress, visible}){
   }
   const handleAlt = (valorProps, visibleProps) =>{
     setVisibleAlt(visibleProps)
-    valorProps != '' || null ? setVal(valorProps) : null
+    valorProps !== '' || null ? altValor(valorProps) : null // passo o valor alterado para o context
   }
 
   return(
@@ -37,7 +39,7 @@ export default function ConfirmPag({tipo, Icon, valor, onPress, visible}){
         </View>
         <View style={style.containerVal}>
           <Text style={style.confirmText}>Valor a pagar:</Text>
-          <Text style={style.textValConfirm}>R$ {val}</Text>
+          <Text style={style.textValConfirm}>R$ {total}</Text>
         </View>
         <View style={style.Containerbutton}>
           <TouchableOpacity style={[style.button, {backgroundColor: colors.verde}]} onPress={handlePagar}>

@@ -1,12 +1,18 @@
 import { View, Text, TouchableOpacity } from "react-native"
-import React from "react"
+import React, {useContext} from "react"
 import { MaterialIcons } from "@expo/vector-icons"
 import style from "./Style/styleFooter"
 import { useNavigation } from "@react-navigation/native"
 
-export default function Footer({ Valor, nextScreen }) {
-	const navigation = useNavigation()
+import {RelatContex  } from '../../Context/RelatorioPag'
 
+
+export default function Footer({valor, nextScreen }) {
+
+	const {total} = useContext(RelatContex)
+
+	const navigation = useNavigation()
+	
 	return (
 		<View style={style.containerFooter}>
 
@@ -17,8 +23,8 @@ export default function Footer({ Valor, nextScreen }) {
 			</View>
 
 			<View style={style.valor}>
-				{Valor ?
-					<Text style={style.txt}>Total: R${Valor}</Text>
+				{valor ?
+					<Text style={style.txt}>Total: R$ {total}</Text>
 					: null
 				}
 			</View>

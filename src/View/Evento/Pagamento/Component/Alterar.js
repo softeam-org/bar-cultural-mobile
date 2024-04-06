@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 
 import style from '../Style/stylePagamento'
@@ -7,10 +7,10 @@ import { colors } from "../../../Style/vars";
 export default function Alterar ({onPress, visibleAlt}){
   
   const [valor, setValor] = useState(null)
-
   const handleValor = (val) => {
     setValor(val)
   }
+
 
   const confirm = () => {
     if(valor != null || !isNaN(parseFloat(valor))){
@@ -20,7 +20,7 @@ export default function Alterar ({onPress, visibleAlt}){
   const cancelar = () =>{
     onPress(!visibleAlt)
   }
-  
+
   return(
     <View style={style.confirmContainer}>
       <Text style={style.confirmText}>Digite o novo valor:</Text>

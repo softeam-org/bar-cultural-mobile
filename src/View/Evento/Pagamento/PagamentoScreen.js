@@ -1,14 +1,16 @@
 import { View, Modal } from "react-native";
-import { useState} from "react";
+import { useState, useContext, useEffect} from "react";
 
 import Footer from "../../Components/Footer";
 import TipoPagamento from "./Component/TipoPagamento";
 import Fundo from "../../Components/Fundo";
 import style from "./Style/stylePagamento";
 import ConfirmPag from "./Component/ConfirmePag";
+import {RelatContex  } from '../../../Context/RelatorioPag'
 
 export default function PagamentoScreen(){
-
+  
+  const { total} = useContext(RelatContex)
   const formasPag = [
     {
       "Icon": "credit-card",
@@ -56,10 +58,10 @@ export default function PagamentoScreen(){
             visible={visible}
             onRequestClose={() => setVisible(false)}
           >
-           <ConfirmPag tipo={confirmProps[1]} Icon={confirmProps[0]} valor={'20,00'} visible={visible} onPress={handleVisible}/>
+           <ConfirmPag tipo={confirmProps[1]} Icon={confirmProps[0]} valor={total} visible={visible} onPress={handleVisible}/>
           </Modal>
         </View>
-       <Footer/>
+       <Footer valor={total}/>
     </Fundo>
   );
 }
