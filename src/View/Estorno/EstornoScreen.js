@@ -1,12 +1,15 @@
 import { View, Text, ImageBackground, TextInput, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
+import {useNavigation} from '@react-navigation/native'
 import style from './Style/styleEstornoDetalhes'
 import Header from '../Components/Header'
+import EstornoDetalhesScreen from './EstornoDetalhesScreen'
 
 export default function EstornoScreen() {
 
 	const[cod,setCod] = useState()
-	const[erro,setErro] = useState(false)
+	const [erro, setErro] = useState(false)
+	const navigation = useNavigation();
 
 	function Verificar(){
 		setCod("Código inválido! Digite novamente.")
@@ -39,7 +42,7 @@ export default function EstornoScreen() {
 					}}
 					/>
 
-					<TouchableOpacity style={style.button} onPress={Verificar}>
+					<TouchableOpacity style={style.button} onPress={() => navigation.navigate("Estorno confirmação")}>
 						<Text style={style.txtButton}>Confirmar</Text>
 					</TouchableOpacity>
 
