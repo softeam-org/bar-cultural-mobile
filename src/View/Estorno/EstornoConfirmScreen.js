@@ -2,19 +2,21 @@ import { View, Text, ImageBackground, TouchableOpacity } from 'react-native'
 import React from 'react'
 import style from "./Style/styleEstornoConfirm"
 import Header from '../Components/Header'
+import { useNavigation } from '@react-navigation/native'
 
+export default function EstornoConfirmScreen(props) {
 
-const valor = "25,00"
+  const navigation = useNavigation()
+  const valor = props.route.params
 
-export default function EstornoConfirmScreen() {
   return (
-      <ImageBackground 
-		source={require("../../../assets/fundo.jpg")}
-		style={style.imgBackground}
+    <ImageBackground
+      source={require("../../../assets/fundo.jpg")}
+      style={style.imgBackground}
     >
-    <Header nome={"Estorno"}/>
-    <View style={style.imgCover}>
-    
+      <Header nome={"Estorno"} />
+      <View style={style.imgCover}>
+
         <View style={style.container}>
           <Text style={style.txtQuestion}>Deseja realizar estorno?</Text>
           <Text style={style.txtValue}>Valor à devolver:</Text>
@@ -24,14 +26,14 @@ export default function EstornoConfirmScreen() {
               Confirmar
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={style.buttonCancel}>
+          <TouchableOpacity style={style.buttonCancel} onPress={() => navigation.goBack()}>
             <Text style={style.txtButton}>
               Cancelar
-          </Text>
+            </Text>
           </TouchableOpacity>
         </View>
-    </View>
+      </View>
     </ImageBackground>
-  
+
   )
 }

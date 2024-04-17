@@ -11,7 +11,7 @@ export default function Footer({ Valor, nextScreen }) {
 		<View style={style.containerFooter}>
 
 			<View style={style.backScreen}>
-				<TouchableOpacity style={style.button} onPress={()=>navigation.goBack()}>
+				<TouchableOpacity style={style.button} onPress={() => navigation.goBack()}>
 					<MaterialIcons name="keyboard-arrow-left" size={50} color="#fff" />
 				</TouchableOpacity>
 			</View>
@@ -25,7 +25,7 @@ export default function Footer({ Valor, nextScreen }) {
 
 			<View style={style.nextScreen}>
 				{nextScreen ?
-					<TouchableOpacity style={style.button} onPress={()=>navigation.navigate(nextScreen)}>
+					<TouchableOpacity style={style.button} onPress={() => navigation.navigate(nextScreen, Valor)}>
 						<MaterialIcons name="keyboard-arrow-right" size={50} color="#fff" />
 					</TouchableOpacity>
 					: null
