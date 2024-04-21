@@ -1,19 +1,10 @@
-import { createContext, useState, useEffect  } from "react";
+import { createContext, useState } from "react";
 
 export const RelatContex = createContext({});
 
 function TotalProvider({ children }) {
   const [relatorio, setRelatorio] = useState([]);
   const [total, setTotal] = useState('0,00');
-
-  useEffect(() => {
-    console.log(total)
-    relatorio.map((prod, index) => {
-      prod.itens.map((iten, ind) => { //testes
-        console.log(iten);
-      });
-    });
-    }, [total])
 
   function compra(tot, selec) {
     if (tot !== '' && selec !== '') {
