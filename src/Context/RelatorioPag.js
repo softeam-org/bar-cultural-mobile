@@ -1,10 +1,19 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect  } from "react";
 
 export const RelatContex = createContext({});
 
 function TotalProvider({ children }) {
   const [relatorio, setRelatorio] = useState([]);
   const [total, setTotal] = useState('0,00');
+
+  useEffect(() => {
+    console.log(total)
+    relatorio.map((prod, index) => {
+      prod.itens.map((iten, ind) => { //testes
+        console.log(iten);
+      });
+    });
+    }, [total])
 
   function compra(tot, selec) {
     if (tot !== '' && selec !== '') {
@@ -17,8 +26,9 @@ function TotalProvider({ children }) {
   }
   
   function altValor(valor) { // vai ser utilizado no componente alterar, para alterar o valor total caso necessário
-    valor = valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-    setTotal(parseFloat(valor));
+    const valorFloat = valor.toString().replace('.', ',');
+
+    setTotal(valorFloat);
   }
 
   return (

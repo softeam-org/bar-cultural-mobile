@@ -80,7 +80,7 @@ export default function ProdutoScreen() {
       ]
     }
   ]
-   const {compra, relatorio, total } = useContext(RelatContex) //context
+   const {compra, total } = useContext(RelatContex) //context
 
 /* ----------------------Cria um relatório para os itens comprados de cada produto--------------------------------------- */
 

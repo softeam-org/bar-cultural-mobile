@@ -19,7 +19,6 @@ export default function ConfirmPag({tipo, Icon, valor, onPress, visible}){
   
   const [visiblePagar, setVisiblePagar] = useState(false)
   const [visibleAlt, setVisibleAlt] = useState(false)
-  const [val, setVal] = useState(valor)
 
   const handlePagar = () => {
     setVisiblePagar(!visiblePagar)
@@ -45,7 +44,7 @@ export default function ConfirmPag({tipo, Icon, valor, onPress, visible}){
           <TouchableOpacity style={[style.button, {backgroundColor: colors.verde}]} onPress={handlePagar}>
             <Text style={style.textButton}>Confirmar</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[style.button, {backgroundColor: colors.preto}]} onPress={() => handleAlt(val, !visibleAlt)}>
+          <TouchableOpacity style={[style.button, {backgroundColor: colors.preto}]} onPress={() => handleAlt(valor, !visibleAlt)}>
             <Text style={style.textButton}>Alterar Valor</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[style.button, {backgroundColor: colors.laranja1}]} onPress={handleCancelar}>

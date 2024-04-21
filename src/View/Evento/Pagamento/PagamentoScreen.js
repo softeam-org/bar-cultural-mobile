@@ -1,5 +1,5 @@
 import { View, Modal } from "react-native";
-import { useState, useContext, useEffect} from "react";
+import { useState, useContext} from "react";
 
 import Footer from "../../Components/Footer";
 import TipoPagamento from "./Component/TipoPagamento";

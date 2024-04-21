@@ -4,12 +4,10 @@ import { MaterialIcons } from "@expo/vector-icons"
 import style from "./Style/styleFooter"
 import { useNavigation } from "@react-navigation/native"
 
-import {RelatContex  } from '../../Context/RelatorioPag'
 
 
 export default function Footer({valor, nextScreen }) {
 
-	const {total} = useContext(RelatContex)
 
 	const navigation = useNavigation()
 	
@@ -24,7 +22,7 @@ export default function Footer({valor, nextScreen }) {
 
 			<View style={style.valor}>
 				{valor ?
-					<Text style={style.txt}>Total: R$ {total}</Text>
+					<Text style={style.txt}>Total: R$ {valor}</Text>
 					: null
 				}
 			</View>
