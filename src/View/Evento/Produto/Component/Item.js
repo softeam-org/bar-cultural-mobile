@@ -1,16 +1,27 @@
-import { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import React from "react";
-import style from "../Style/styleProduto";
 import { MaterialIcons } from "@expo/vector-icons";
+import style from "../Style/styleProduto";
+import { RelatContex } from "../../../../Context/RelatorioPag";
 
 export default function Item({ title, valor, styleItem, stateQuantidade, onQuantidadeChange }) {
-  
-  /* Há necessidade de veirificar se stateQuanidade é um objeto, pois apesar de atualizar-se, quando o o componete produto é collapsado
-     seu valor retorna como um objeto, para preservar seu estado
-  */
-  const [quantidade, setQuantidade] = typeof stateQuantidade === "object" ? useState(stateQuantidade.quantidade) :  useState(stateQuantidade);
+  const { relatorio } = useContext(RelatContex); // context
 
+  // Encontra o item específico dentro do contexto
+  const itemEncontrado = relatorio.flatMap(produto =>
+    produto.itens.find(item => item.nome === title)
+  ).find(item => item !== undefined); // Filtra os valores undefined
+    
+  // Inicializa a quantidade e o total com o valor do estado ou o valor encontrado no contexto
+  const [quantidade, setQuantidade] = useState(
+    stateQuantidade ? (typeof stateQuantidade === "object" ? stateQuantidade.quantidade : stateQuantidade) : (itemEncontrado ? itemEncontrado.quantidade : "00")
+  );
+  
+  useEffect(() => {
+    if (itemEncontrado) {
+      setQuantidade(itemEncontrado.quantidade);
+    }
+  }, [itemEncontrado, relatorio]);
 
   // Função para calcular o total
   const calcularTotal = (qtd) => {
@@ -25,7 +36,7 @@ export default function Item({ title, valor, styleItem, stateQuantidade, onQuant
     setQuantidade(incrementar.toString().padStart(2, "0"));
     const total = calcularTotal(incrementar);
 
-    // faz a mesma ação, porém o valor é atualizado no componente "Produto"
+    // Faz a mesma ação, porém o valor é atualizado no componente "Produto"
     onQuantidadeChange(title, incrementar.toString().padStart(2, "0"), total);
   };
 
@@ -36,7 +47,7 @@ export default function Item({ title, valor, styleItem, stateQuantidade, onQuant
     setQuantidade(subtrair.toString().padStart(2, "0"));
     const total = calcularTotal(subtrair);
 
-    // faz a mesma ação, porém o valor é atualizado no componente "Produto"
+    // Faz a mesma ação, porém o valor é atualizado no componente "Produto"
     onQuantidadeChange(title, subtrair.toString().padStart(2, "0"), total);
   };
 
@@ -48,7 +59,7 @@ export default function Item({ title, valor, styleItem, stateQuantidade, onQuant
           <TouchableOpacity onPress={subtrair}>
             <MaterialIcons name="keyboard-arrow-left" size={40} color="black" />
           </TouchableOpacity>
-          <Text style={style.qtdValue}>{String(quantidade)}</Text>
+          <Text style={style.qtdValue}>{quantidade}</Text>
           <TouchableOpacity onPress={adicionar}>
             <MaterialIcons name="keyboard-arrow-right" size={40} color="black" />
           </TouchableOpacity>

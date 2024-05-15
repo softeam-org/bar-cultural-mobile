@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const RelatContex = createContext({});
 
@@ -15,7 +15,19 @@ function TotalProvider({ children }) {
       setTotal(tot);
     }
   }
-  
+  useEffect(() => {
+    console.log(' -----------------**********************************-----------------------');
+    console.log('relatorioContext: ', relatorio);
+    relatorio.map((prod, index) => {
+      console.log('\n>>>>>>>>>>>>>> ', prod.titulo, ' <<<<<<<<<<<<<<<<<<<')
+      prod.itens.map((iten, ind) => {
+        console.log(iten);
+      });
+    });
+    console.log('\n >>>>> total: ', total);
+
+  }, [total]);
+
   function altValor(valor) { // vai ser utilizado no componente alterar, para alterar o valor total caso necessário
     const valorFloat = valor.toString().replace('.', ',');
 
