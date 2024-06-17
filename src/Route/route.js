@@ -9,11 +9,15 @@ import EstornoConfirm from '../View/Estorno/EstornoConfirmScreen'
 import Produtos from "../View/Evento/Produto/ProdutoScreen";
 import Consulta from "../View/Consulta/ConsultaScreen";
 import Impressao from "../View/Impressao/ImpressaoScreen"
+import PagamentoScreen from "../View/Evento/Pagamento/PagamentoScreen"
+
+import TotalProvider  from "../Context/RelatorioPag" //context valor total d0 pagamento e relatório
 
 const Stack = createStackNavigator()
 
 export default function MyStack() {
 	return (
+		<TotalProvider>
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			<Stack.Screen name="Login" component={Login} />
 			<Stack.Screen name="Eventos" component={Evento} />
@@ -23,8 +27,10 @@ export default function MyStack() {
 			<Stack.Screen name="Estorno detalhes" component={EstornoDetalhes} />
 			<Stack.Screen name="Estorno confirmação" component={EstornoConfirm} />
 			<Stack.Screen name="Produtos" component={Produtos} />
+			<Stack.Screen name="Pagamento" component={PagamentoScreen} />
 			<Stack.Screen name="Impressão" component={Impressao} />
 		</Stack.Navigator>
+	</TotalProvider>
 	)
 
 }

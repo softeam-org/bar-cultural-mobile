@@ -40,7 +40,6 @@ export default function Produto({title, children, onRelatProduto}) {
 		// Atualize o estado do produto
 		setProduto(updatedProduto);
 	
-		console.log("Produto atualizado:", updatedProduto);
 		onRelatProduto(updatedProduto)
 
 

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-
+import {colors} from '../../../Style/vars'
 
 export default StyleSheet.create({
 	collapse: {
@@ -69,4 +69,16 @@ export default StyleSheet.create({
 		fontWeight: "700",
 		fontSize: 24
 	},
+	buscaContainer: {
+    backgroundColor: colors.cinza,
+		padding: 10,
+		width: '100%',
+   },
+	 textInputBusca: {
+		fontSize: 20,
+		fontWeight: '700',
+		width: '100%',
+		paddingHorizontal: '100px',
+		color: 'white'
+	 }
 })
