@@ -8,6 +8,7 @@ import EstornoDetalhes from "../View/Estorno/EstornoDetalhesScreen"
 import EstornoConfirm from '../View/Estorno/EstornoConfirmScreen'
 import Produtos from "../View/Evento/Produto/ProdutoScreen";
 import Consulta from "../View/Consulta/ConsultaScreen";
+import ConsultaDetalhes from "../View/Consulta/ConsultaDetailsScreen";
 import Impressao from "../View/Impressao/ImpressaoScreen"
 import PagamentoScreen from "../View/Evento/Pagamento/PagamentoScreen"
 
@@ -24,6 +25,7 @@ export default function MyStack() {
 			<Stack.Screen name="Detalhes Evento" component={DetalheEvento} />
 			<Stack.Screen name="Estorno" component={Estorno} />
 			<Stack.Screen name="Consulta" component={Consulta} />
+			<Stack.Screen name="Consulta Detalhes" component={ConsultaDetalhes} />
 			<Stack.Screen name="Estorno detalhes" component={EstornoDetalhes} />
 			<Stack.Screen name="Estorno confirmação" component={EstornoConfirm} />
 			<Stack.Screen name="Produtos" component={Produtos} />
