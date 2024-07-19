@@ -34,7 +34,7 @@ export default function EstornoDetalhesScreen() {
 
 			</View>
 
-			<Footer Valor={valorFinal} nextScreen={"Estorno confirmação"} />
+			<Footer valor={valorFinal} nextScreen={"Estorno confirmação"} />
 		</Fundo>
 	)
 }
