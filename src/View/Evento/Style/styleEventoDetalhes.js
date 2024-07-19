@@ -1,0 +1,71 @@
+import { StyleSheet } from "react-native";
+import {colors} from '../../Style/vars'
+
+export default StyleSheet.create({
+  containerView:{
+    flex:1,
+  },
+  img:{
+    width:'100%',
+    height:'100%'
+  },
+  cover:{
+    width:'100%',
+    height:'100%',
+    alignItems:'center',
+    backgroundColor:'rgba(400,400,400,0.7)'
+  },
+  //componente
+  container:{
+    width:350,
+    height:240,
+    marginTop:30,
+    borderRadius:20,
+    alignItems:'center',
+    justifyContent:'space-evenly',
+    backgroundColor:colors.branco,
+  },
+  containerTitle:{
+    width:'90%',
+    height:40,
+    borderRadius:10,
+    alignItems:'center',
+    justifyContent:'center',
+    backgroundColor:colors.laranja1
+  },
+  title:{
+    fontSize:20,
+    fontWeight:'bold',
+    color:colors.branco
+  },
+  basicDatas:{
+    width:'80%',
+    height:150,
+    padding:5,
+    paddingRight:10,
+    justifyContent:'space-around',
+  },
+  containerData:{
+    width:'100%',
+    flexDirection:'row'
+  },
+  containerObs:{
+    width:'100%'
+  },
+  viewObs:{
+    width:'100%',
+    flexDirection:'row',
+  },
+  txtObs:{
+    fontSize:20,
+    paddingLeft:20
+  },
+  bold:{
+    fontSize:20,
+    fontWeight:'bold'
+  },
+  date:{
+    fontSize:20
+  },
+ 
+})
